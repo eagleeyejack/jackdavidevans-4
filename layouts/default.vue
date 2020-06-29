@@ -6,8 +6,8 @@
 
 <style lang="scss">
 html {
-	font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-		sans-serif;
+	font-family: chicago, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	word-spacing: 1px;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -15,6 +15,10 @@ html {
 	-webkit-font-smoothing: antialiased;
 	box-sizing: border-box;
 	background-color: var(--color-blue);
+}
+
+body {
+	font-family: chicago;
 }
 
 *,
@@ -55,12 +59,6 @@ html {
 	}
 }
 
-@font-face {
-	font-family: "Chicago";
-	font-weight: 400;
-	src: url("/static/chicago.woff") format("woff");
-}
-
 :root {
 	--color-white: #fff;
 	--color-black: #000;
@@ -69,6 +67,9 @@ html {
 	--color-grey-dark: #a8a8a8;
 	--color-grey-darker: #c4c4c4;
 	--color-red: #ff123e;
+
+	--space-tiny: 10px;
+	--space-small: 16px;
 }
 
 html,
