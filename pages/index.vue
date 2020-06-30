@@ -1,7 +1,7 @@
 <template>
-	<div class="container">
+	<div class="container" draggable="false">
 		<Header />
-		<div class="desktop" @dragover.prevent>
+		<div class="desktop" draggable="false" @dragover.stop @drop.prevent="drop">
 			<DesktopIcon title="Work" :index="1" />
 			<DesktopIcon title="Experience" :index="2" />
 			<DesktopIcon title="Contact" :index="3" />
@@ -27,11 +27,13 @@ export default Vue.extend({})
 .container {
 	margin: 0 auto;
 	height: 100vh;
+	background: lightgreen;
 }
 
 .desktop {
 	position: relative;
 	padding: var(--spacing-small);
 	height: calc(100% - 26px);
+	background: lightblue;
 }
 </style>
