@@ -7,13 +7,11 @@
 		:style="{ left: x + 'px', top: y + 'px' }"
 		@dragover.prevent
 		@dragstart="isDragging"
-		@dragenter="dragEnter"
 		@dragleave="dragLeave(e, dragging)"
 		@dragend="dragEnd"
 	>
-		<div class="desktop-icon__icon"></div>
+		<div class="desktop-icon__icon">{{ index }}</div>
 		<div class="desktop-icon__title">{{ title }}</div>
-		{{ index }}
 	</div>
 </template>
 
@@ -31,25 +29,16 @@ export default Vue.extend({
 			required: true
 		}
 	},
-	data(index: number) {
+	data() {
 		return {
 			x: 10,
-			y: 10,
+			y: this.index * 10 + 110 * (this.index - 1),
 			id: null,
 			dragging: false
 		}
 	},
 	methods: {
-		dragEnter(e: any) {
-			/*
-      if (ev.clientY > ev.target.height / 2) {
-        ev.target.style.marginBottom = '10px'
-      } else {
-        ev.target.style.marginTop = '10px'
-      }
-      */
-		},
-		isDragging(e: any) {
+		isDragging() {
 			this.dragging = true
 		},
 		dragLeave(e: any, dragging: boolean) {
@@ -79,23 +68,27 @@ export default Vue.extend({
 	top: 0;
 	margin: var(--spacing-tiny);
 	height: 110px;
+	width: 110px;
+	text-align: center;
 
 	&__icon {
 		background: var(--color-grey);
 		height: 75px;
 		width: 75px;
 		margin: 0 auto;
+		font-size: 20px;
 	}
 
 	&__title {
+		display: inline-block;
 		background: var(--color-white);
 		color: var(--color-black);
 		font-size: 16px;
 		text-align: center;
 		font-family: chicago;
-		margin: 10px 0 0 0;
-		width: 100%;
+		margin: 10px auto 0;
 		padding: 4px;
+		max-width: 106px;
 	}
 }
 </style>

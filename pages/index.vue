@@ -2,13 +2,13 @@
 	<div class="container">
 		<Header />
 		<div class="desktop" @dragover.prevent>
-			<DesktopIcon title="Work" index="1" />
-			<DesktopIcon title="Experience" index="2" />
-			<!-- 
-			<DesktopIcon title="Contact" />
+			<DesktopIcon title="Work" :index="1" />
+			<DesktopIcon title="Experience" :index="2" />
 
-			<DesktopIcon title="Games" />
-			<DesktopIcon title="CV" /> -->
+			<DesktopIcon title="Contact" :index="3" />
+
+			<DesktopIcon title="Games" :index="4" />
+			<DesktopIcon title="CV" :index="5" />
 		</div>
 	</div>
 </template>
