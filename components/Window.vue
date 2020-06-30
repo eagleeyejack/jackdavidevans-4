@@ -2,7 +2,7 @@
 	<div
 		:id="title"
 		:index="index"
-		class="desktop-icon"
+		class="window"
 		draggable="true"
 		:style="{ left: x + 'px', top: y + 'px' }"
 		@dragover.prevent
@@ -10,8 +10,13 @@
 		@dragleave="dragLeave(e, dragging)"
 		@dragend="dragEnd"
 	>
-		<div class="desktop-icon__icon">{{ index }}</div>
-		<div class="desktop-icon__title">{{ title }}</div>
+		<div>
+			<button class="window__close" />
+			<div class="window__title">{{ title }}</div>
+			<div class="window__contents">
+				<slot></slot>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -31,8 +36,8 @@ export default Vue.extend({
 	},
 	data() {
 		return {
-			x: 10,
-			y: this.index * 10 + 110 * (this.index - 1),
+			x: 500,
+			y: this.index * 100 + 110 * (this.index - 1),
 			id: null,
 			dragging: false
 		}
@@ -61,33 +66,41 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.desktop-icon {
+.window {
 	position: absolute;
-	cursor: pointer;
 	top: 0;
-	margin: var(--spacing-tiny);
-	height: 110px;
-	width: 110px;
 	text-align: center;
-
-	&__icon {
-		background: var(--color-grey);
-		height: 75px;
-		width: 75px;
-		margin: 0 auto;
-		font-size: 20px;
-	}
+	background: var(--color-grey);
+	min-width: 600px;
+	padding: var(--space-tiny);
 
 	&__title {
 		display: inline-block;
-		background: var(--color-white);
 		color: var(--color-black);
 		font-size: 16px;
 		text-align: center;
 		font-family: chicago;
-		margin: 10px auto 0;
-		padding: 4px;
-		max-width: 106px;
+		position: relative;
+		width: 100%;
+		cursor: grab;
+		padding-bottom: var(--space-tiny);
+	}
+
+	&__close {
+		position: absolute;
+		left: var(--space-tiny);
+		border: 0;
+		background: var(--color-red);
+		cursor: pointer;
+		z-index: 2;
+		width: 15px;
+		height: 15px;
+	}
+
+	&__contents {
+		background: var(--color-white);
+		min-height: 300px;
+		border: 2px solid var(--color-black);
 	}
 }
 </style>
