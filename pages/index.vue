@@ -1,9 +1,9 @@
 <template>
 	<div class="container">
 		<Header />
-		<div class="desktop">
-			<!-- <DesktopIcon title="Work" /> -->
-			<DesktopIcon title="Experience" />
+		<div class="desktop" @dragover.prevent>
+			<DesktopIcon title="Work" index="1" />
+			<DesktopIcon title="Experience" index="2" />
 			<!-- 
 			<DesktopIcon title="Contact" />
 
@@ -16,8 +16,6 @@
 <script lang="ts">
 import Vue from "vue"
 
-import DesktopIcon from "../components/DesktopIcon.vue"
-
 export default Vue.extend({})
 </script>
 
@@ -28,7 +26,7 @@ export default Vue.extend({})
 }
 
 .desktop {
-	background: green;
+	position: relative;
 	padding: var(--spacing-small);
 	height: calc(100% - 26px);
 }

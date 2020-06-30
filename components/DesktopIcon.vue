@@ -1,17 +1,19 @@
 <template>
 	<div
 		:id="title"
-		draggable="true"
+		:index="index"
 		class="desktop-icon"
-		@dragstart="dragStart(title, $event)"
+		draggable="true"
+		:style="{ left: x + 'px', top: y + 'px' }"
 		@dragover.prevent
+		@dragstart="isDragging"
 		@dragenter="dragEnter"
-		@dragleave="dragLeave"
+		@dragleave="dragLeave(e, dragging)"
 		@dragend="dragEnd"
-		@drop="dragFinish($event)"
 	>
 		<div class="desktop-icon__icon"></div>
 		<div class="desktop-icon__title">{{ title }}</div>
+		{{ index }}
 	</div>
 </template>
 
@@ -23,28 +25,23 @@ export default Vue.extend({
 		title: {
 			type: String,
 			required: true
-		}
-	},
-	data() {
-		return {
-			x: 0,
-			y: 0,
-			id: null,
-			dragging: 0
-		}
-	},
-
-	methods: {
-		dragStart(which: any, e: any) {
-			console.log(e)
-			e.target.style.translateX = e.pageX
-			e.target.style.translateY = e.pageY
-			this.x = e.pageX
-			this.y = e.pageY
-			this.dragging = which
 		},
+		index: {
+			type: Number,
+			required: true
+		}
+	},
+	data(index: number) {
+		return {
+			x: 10,
+			y: 10,
+			id: null,
+			dragging: false
+		}
+	},
+	methods: {
 		dragEnter(e: any) {
-			/* 
+			/*
       if (ev.clientY > ev.target.height / 2) {
         ev.target.style.marginBottom = '10px'
       } else {
@@ -52,20 +49,23 @@ export default Vue.extend({
       }
       */
 		},
-		dragLeave(e: any) {
-			/* 
-      ev.target.style.marginTop = '2px'
-      ev.target.style.marginBottom = '2px'
-      */
+		isDragging(e: any) {
+			this.dragging = true
+		},
+		dragLeave(e: any, dragging: boolean) {
+			if (dragging === false && (e.x < 0 || e.y < 0)) {
+				this.x = 10
+				this.y = 10
+			}
 		},
 		dragEnd(e: any) {
-			this.dragging = -1
-			e.target.style.translateX = e.screenX
-			e.target.style.translateY = e.screenY
-		},
-		dragFinish(e: any) {
-			e.target.style.translateX = e.clientX
-			e.target.style.translateY = e.clientY
+			if (e.x < 0 || e.y < 0) {
+				this.x = 10
+				this.y = 10
+			} else {
+				this.x = e.x
+				this.y = e.y
+			}
 		}
 	}
 })
@@ -75,8 +75,10 @@ export default Vue.extend({
 .desktop-icon {
 	background: red;
 	position: absolute;
-	padding: var(--space-tiny);
 	cursor: pointer;
+	top: 0;
+	margin: var(--spacing-tiny);
+	height: 110px;
 
 	&__icon {
 		background: var(--color-grey);
@@ -93,6 +95,7 @@ export default Vue.extend({
 		font-family: chicago;
 		margin: 10px 0 0 0;
 		width: 100%;
+		padding: 4px;
 	}
 }
 </style>
