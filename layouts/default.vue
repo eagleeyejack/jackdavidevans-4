@@ -63,6 +63,7 @@ body {
 	--color-white: #fff;
 	--color-black: #000;
 	--color-blue: #859ee2;
+	--color-blue-dark: #333399;
 	--color-grey: #dddddd;
 	--color-grey-dark: #a8a8a8;
 	--color-grey-darker: #c4c4c4;

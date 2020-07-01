@@ -1,7 +1,14 @@
 <template>
-	<div :id="title" :index="index" class="window" draggable="true">
+	<div
+		v-show="localVisible === 1"
+		:id="title"
+		:index="index"
+		:style="{ top: y + 'px', left: x + 'px' }"
+		class="window"
+		draggable="true"
+	>
 		<div>
-			<button class="window__close" />
+			<button class="window__close" @click="close" />
 			<div class="window__title">{{ title }}</div>
 			<div class="window__contents">
 				<slot></slot>
@@ -24,13 +31,38 @@ export default Vue.extend({
 		index: {
 			type: Number,
 			required: true
+		},
+		visible: {
+			type: Number,
+			required: true,
+			default: 0
 		}
 	},
 	data() {
-		return {}
+		return {
+			localVisible: 0,
+			y: this.index * 10 + 110 * (this.index - 1),
+			x: this.index * 10 + 110 * (this.index - 1)
+		}
+	},
+	watch: {
+		visible: {
+			deep: true,
+			handler(visible: number) {
+				this.localVisible = visible
+			}
+		}
 	},
 	mounted() {
 		dragItems.methods.dragElement(this.$el)
+		console.log(this.index * 10 + 10 * (this.index - 1))
+		this.localVisible = this.visible
+	},
+	methods: {
+		close() {
+			this.localVisible = 0
+			console.log("ding")
+		}
 	}
 })
 </script>
@@ -46,6 +78,8 @@ export default Vue.extend({
 	user-select: none;
 	top: 300px;
 	left: 300px;
+	z-index: 1;
+	border: 2px solid var(--color-black);
 
 	&__title {
 		display: inline-block;

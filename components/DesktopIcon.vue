@@ -1,15 +1,5 @@
 <template>
-	<div
-		:id="title"
-		:index="index"
-		class="desktop-icon"
-		draggable="true"
-		:style="{ left: x + 'px', top: y + 'px' }"
-		@dragover.prevent
-		@dragstart="isDragging"
-		@dragleave="dragLeave(e, dragging)"
-		@dragend="dragEnd"
-	>
+	<div :id="title" :index="index" class="desktop-icon" draggable="true" :style="{ top: y + 'px' }">
 		<div class="desktop-icon__icon">{{ index }}</div>
 		<div class="desktop-icon__title">{{ title }}</div>
 	</div>
@@ -17,8 +7,10 @@
 
 <script lang="ts">
 import Vue from "vue"
+import dragItems from "../mixins/dragItems"
 
 export default Vue.extend({
+	mixins: [dragItems],
 	props: {
 		title: {
 			type: String,
@@ -37,26 +29,10 @@ export default Vue.extend({
 			dragging: false
 		}
 	},
-	methods: {
-		isDragging() {
-			this.dragging = true
-		},
-		dragLeave(e: any, dragging: boolean) {
-			if (dragging === false && (e.x < 0 || e.y < 0)) {
-				this.x = 10
-				this.y = 10
-			}
-		},
-		dragEnd(e: any) {
-			if (e.x < 0 || e.y < 0) {
-				this.x = 10
-				this.y = 10
-			} else {
-				this.x = e.x
-				this.y = e.y
-			}
-		}
-	}
+	mounted() {
+		dragItems.methods.dragElement(this.$el)
+	},
+	methods: {}
 })
 </script>
 
@@ -69,6 +45,7 @@ export default Vue.extend({
 	height: 110px;
 	width: 110px;
 	text-align: center;
+	left: 10px;
 
 	&__icon {
 		background: var(--color-grey);

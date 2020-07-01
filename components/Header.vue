@@ -85,9 +85,11 @@ export default Vue.extend({
 		justify-content: center;
 		align-items: center;
 		padding: 0 var(--space-tiny);
+		cursor: pointer;
 
 		&:hover {
-			background: var(--color-grey-dark);
+			color: var(--color-white);
+			background: var(--color-blue-dark);
 		}
 	}
 }
@@ -96,6 +98,7 @@ export default Vue.extend({
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: default;
 
 	.time {
 		display: flex;
