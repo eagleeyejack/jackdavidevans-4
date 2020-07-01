@@ -7,22 +7,22 @@
 			<DesktopIcon title="Contact" :index="3" @click.native="open('contact')" />
 			<DesktopIcon title="CV" :index="4" @click.native="open('cv')" />
 
-			<Window title="Work" :index="1" :visible="windows.work">
+			<Window title="Work" :index="1" :visible="windows.work" :close="close">
 				<div>
-					<h1>Llanerch</h1>
+					<h1>Work</h1>
 				</div>
 			</Window>
-			<Window title="Experience" :index="2" :visible="windows.experience">
-				<div>
-					<h1>Exsdd</h1>
-				</div>
-			</Window>
-			<Window title="CV" :index="4" :visible="windows.cv">
+			<Window title="Experience" :index="2" :visible="windows.experience" :close="close">
 				<div>
 					<h1>Exsdd</h1>
 				</div>
 			</Window>
-			<Window title="Contact" :index="3" :visible="windows.contact">
+			<Window title="CV" :index="4" :visible="windows.cv" :close="close">
+				<div>
+					<h1>Exsdd</h1>
+				</div>
+			</Window>
+			<Window title="Contact" :index="3" :visible="windows.contact" :close="close">
 				<div>
 					<h1>Exsdd</h1>
 				</div>
@@ -49,6 +49,9 @@ export default Vue.extend({
 	methods: {
 		open(name: string) {
 			Vue.set(this.windows, name, 1)
+		},
+		close(name: string) {
+			Vue.set(this.windows, name, 0)
 		}
 	}
 })

@@ -30,11 +30,13 @@ export default {
 
 				elmnt.style.top = elmnt.offsetTop - pos2 + "px"
 				elmnt.style.left = elmnt.offsetLeft - pos1 + "px"
+				elmnt.style.zIndex = 5
 			}
 
 			function closeDragElement() {
 				document.onmouseup = null
 				document.onmousemove = null
+				elmnt.style.zIndex = 4
 			}
 		}
 	}
