@@ -1,14 +1,5 @@
 <template>
-	<div
-		:id="title"
-		:index="index"
-		class="window"
-		draggable="true"
-		@dragover.stop
-		@dragstart.stop="elementDrag(this.$el)"
-		@drag.stop="dragMouseDown"
-		@dragend.stop="closeDragElement"
-	>
+	<div :id="title" :index="index" class="window" draggable="true">
 		<div>
 			<button class="window__close" />
 			<div class="window__title">{{ title }}</div>
@@ -21,8 +12,10 @@
 
 <script lang="ts">
 import Vue from "vue"
+import dragItems from "../mixins/dragItems"
 
 export default Vue.extend({
+	mixins: [dragItems],
 	props: {
 		title: {
 			type: String,
@@ -34,64 +27,10 @@ export default Vue.extend({
 		}
 	},
 	data() {
-		return {
-			pos1: 0,
-			pos2: 0,
-			pos3: 0,
-			pos4: 0,
-			id: null,
-			dragging: false
-		}
+		return {}
 	},
 	mounted() {
-		console.log(this.$el)
-		this.dragInit(this.$el)
-	},
-	methods: {
-		dragInit(elemt: any) {
-			elemt.onmousedown = this.dragMouseDown
-			elemt.style.background = "red"
-		},
-		closeDragElement(e: any) {
-			/* stop moving when mouse button is released: */
-			document.onmouseup = null
-			document.onmousemove = null
-			e.target.style.background = "orange"
-		},
-		elementDrag(e: any, elmnt: any) {
-			e.preventDefault()
-			e.stopPropagation()
-
-			console.log(e.target)
-
-			// calculate the new cursor position:
-			this.pos1 = this.pos3 - e.clientX
-			this.pos2 = this.pos4 - e.clientY
-			this.pos3 = e.clientX
-			this.pos4 = e.clientY
-			// set the element's new position:
-
-			console.log(elmnt)
-			elmnt.style.top = elmnt.offsetTop - this.pos2 + "px"
-			elmnt.style.left = elmnt.offsetLeft - this.pos1 + "px"
-			elmnt.style.background = "purple"
-		},
-		dragMouseDown(e: any) {
-			e.preventDefault()
-			e.stopPropagation()
-
-			console.log("dragmousemouse")
-
-			// get the mouse cursor position at startup:
-			this.pos3 = e.clientX
-			this.pos4 = e.clientY
-
-			document.onmouseup = this.closeDragElement
-			// call a function whenever the cursor moves:
-			document.onmousemove = this.elementDrag
-
-			e.target.style.background = "yellow"
-		}
+		dragItems.methods.dragElement(this.$el)
 	}
 })
 </script>
@@ -105,6 +44,8 @@ export default Vue.extend({
 	min-width: 600px;
 	padding: var(--space-tiny);
 	user-select: none;
+	top: 300px;
+	left: 300px;
 
 	&__title {
 		display: inline-block;
