@@ -34,11 +34,14 @@ export default Vue.extend({
 	},
 	data() {
 		return {
-			time: dayjs().format("hh:mm A"),
+			time: dayjs().format("hh:mm:ss A"),
 			date: dayjs().format("ddd MMM MM YYYY"),
 			hover: false,
 			leftXOption: 0
 		}
+	},
+	mounted() {
+		this.getTime()
 	},
 	methods: {
 		mouseEnter(event: any) {
@@ -47,6 +50,12 @@ export default Vue.extend({
 		},
 		mouseLeave() {
 			this.hover = false
+		},
+		setTime() {
+			this.time = dayjs().format("hh:mm:ss A")
+		},
+		getTime() {
+			setInterval(this.setTime, 1000)
 		}
 	}
 })

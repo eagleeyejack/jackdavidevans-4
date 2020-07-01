@@ -28,7 +28,7 @@ export default Vue.extend({
 	background: var(--color-grey);
 	width: 250px;
 	top: 24px;
-	border-top: 2px solid var(--color-black);
+	border: 2px solid var(--color-black);
 	z-index: 2;
 
 	&:hover {
