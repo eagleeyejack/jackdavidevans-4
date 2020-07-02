@@ -13,9 +13,7 @@
 				</div>
 			</Window>
 			<Window title="Experience" :index="2" :visible="windows.experience" :close="close">
-				<div>
-					<h1>Exsdd</h1>
-				</div>
+				<Experience v-for="experience in experiences" :key="experience.company" :experience="experience" />
 			</Window>
 			<Window title="CV" :index="4" :visible="windows.cv" :close="close">
 				<div>
@@ -33,8 +31,14 @@
 
 <script lang="ts">
 import Vue from "vue"
+import { experiences } from "static/experience"
+
+import Experience from "../components/Experience.vue"
 
 export default Vue.extend({
+	components: {
+		Experience
+	},
 	data() {
 		return {
 			windows: {
@@ -43,7 +47,8 @@ export default Vue.extend({
 				contact: 0,
 				cv: 0,
 				games: 0
-			}
+			},
+			experiences
 		}
 	},
 	methods: {

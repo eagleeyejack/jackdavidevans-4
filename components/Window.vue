@@ -147,6 +147,7 @@ export default Vue.extend({
 		height: calc(100% - 26px);
 		width: 100%;
 		padding: var(--space-tiny);
+		overflow: scroll;
 	}
 }
 </style>
