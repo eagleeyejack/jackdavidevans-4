@@ -11,13 +11,13 @@
 					<h1>Home</h1>
 				</div>
 			</Window>
-			<Window title="Experience" :index="2" :visible="windows.experience" :close="close">
-				<Experience v-for="experience in experiences" :key="experience.company" :experience="experience" />
-			</Window>
-			<Window title="CV" :index="4" :visible="windows.cv" :close="close">
+			<Window title="Contact" :index="3" :visible="windows.contact" :close="close">
 				<div>
 					<h1>Exsdd</h1>
 				</div>
+			</Window>
+			<Window title="Experience" :index="2" :visible="windows.experience" :close="close">
+				<Experience v-for="experience in experiences" :key="experience.company" :experience="experience" />
 			</Window>
 		</div>
 	</div>
