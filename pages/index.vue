@@ -2,25 +2,19 @@
 	<div class="container" draggable="false">
 		<Header />
 		<div class="desktop" draggable="false" @dragover.stop @drop.prevent="drop">
-			<DesktopIcon title="Work" :index="1" @click.native="open('work')" />
+			<DesktopIcon title="Home" :index="1" @click.native="open('home')" />
 			<DesktopIcon title="Experience" :index="2" @click.native="open('experience')" />
 			<DesktopIcon title="Contact" :index="3" @click.native="open('contact')" />
-			<DesktopIcon title="CV" :index="4" @click.native="open('cv')" />
 
-			<Window title="Work" :index="1" :visible="windows.work" :close="close">
+			<Window title="Home" :index="1" :visible="windows.home" :close="close">
 				<div>
-					<h1>Work</h1>
+					<h1>Home</h1>
 				</div>
 			</Window>
 			<Window title="Experience" :index="2" :visible="windows.experience" :close="close">
 				<Experience v-for="experience in experiences" :key="experience.company" :experience="experience" />
 			</Window>
 			<Window title="CV" :index="4" :visible="windows.cv" :close="close">
-				<div>
-					<h1>Exsdd</h1>
-				</div>
-			</Window>
-			<Window title="Contact" :index="3" :visible="windows.contact" :close="close">
 				<div>
 					<h1>Exsdd</h1>
 				</div>
@@ -42,7 +36,7 @@ export default Vue.extend({
 	data() {
 		return {
 			windows: {
-				work: 1,
+				home: 1,
 				experience: 0,
 				contact: 0,
 				cv: 0,

@@ -29,7 +29,7 @@ export default Vue.extend({
 	width: 250px;
 	top: 24px;
 	border: 2px solid var(--color-black);
-	z-index: 2;
+	z-index: 999;
 	cursor: pointer;
 
 	&:hover {

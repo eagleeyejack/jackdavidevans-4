@@ -51,7 +51,7 @@ export default Vue.extend({
 		return {
 			localVisible: 0,
 			y: this.index * 10 + 170 * this.index,
-			x: this.index * 10 + 210 * this.index
+			x: this.index * 10 + 110 * this.index
 		}
 	},
 	watch: {
@@ -74,15 +74,13 @@ export default Vue.extend({
 .resizer {
 	width: 10px;
 	height: 10px;
-	border-radius: 50%; /*magic to turn square into circle*/
-	background: white;
-	border: 3px solid #4286f4;
+	opacity: 0;
 	position: absolute;
 }
 .resizer.top-left {
 	left: -5px;
 	top: -5px;
-	cursor: nwse-resize; /*resizer cursor*/
+	cursor: nwse-resize;
 }
 .resizer.top-right {
 	right: -5px;
@@ -111,7 +109,10 @@ export default Vue.extend({
 	left: 300px;
 	z-index: 1;
 	border: 2px solid var(--color-black);
-	min-height: 500px;
+	min-height: 400px;
+	max-width: 1000px;
+	max-height: 700px;
+	z-index: 6;
 
 	&__inner {
 		height: 100%;
@@ -148,6 +149,7 @@ export default Vue.extend({
 		width: 100%;
 		padding: var(--space-tiny);
 		overflow: scroll;
+		max-height: calc(700px - 46px);
 	}
 }
 </style>

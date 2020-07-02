@@ -5,8 +5,9 @@ export const experiences = [
 		date: "Septemer ‘19 - Present",
 		list: [
 			"React.js, TypeScript, Node.js, Serverless, GraphQL.",
-			"AWS - DynamoDB, S3, CloudFront, CodeBuild, Terraform. • Styled Components, React Hooks, Apollo.",
-			"MVP product development (SAAS) for startups.",
+			"AWS - DynamoDB, S3, CloudFront, CodeBuild, Terraform.",
+			"Styled Components, React Hooks, Apollo.",
+			"MVP development (SAAS) for startups.",
 			"API design & refactoring."
 		]
 	},
