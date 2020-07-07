@@ -1,6 +1,9 @@
 <template>
 	<ul class="dropdown-menu">
-		<li v-for="option in options" :key="option">{{ `${option}` }}</li>
+		<li v-for="option in options" :key="option">
+			<a v-if="option.link" :href="option.link" target="_blank">{{ `${option.title}` }}</a>
+			<button v-else @click="test()">{{ `${option.title}` }}</button>
+		</li>
 	</ul>
 </template>
 
@@ -9,14 +12,23 @@ import Vue from "vue"
 
 export default Vue.extend({
 	props: {
+		title: {
+			type: String,
+			required: true
+		},
 		options: {
 			type: Array,
+			required: true
+		},
+		test: {
+			type: Function,
 			required: true
 		}
 	},
 	data() {
 		return {
-			showFile: false
+			showFile: false,
+			localVisible: 0
 		}
 	}
 })
@@ -39,9 +51,28 @@ export default Vue.extend({
 	li {
 		padding: var(--space-tiny);
 
+		button {
+			border: 0;
+			height: 100%;
+			width: 100%;
+			text-align: left;
+			font-size: 16px;
+			font-family: chicago;
+			background: transparent;
+		}
+
 		&:hover {
 			background: var(--color-black);
 			color: var(--color-white);
+			a,
+			button {
+				color: var(--color-white);
+			}
+		}
+
+		a {
+			text-decoration: none;
+			color: var(--color-black);
 		}
 
 		&:first-child {

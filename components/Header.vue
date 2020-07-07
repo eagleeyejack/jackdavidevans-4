@@ -1,18 +1,33 @@
 <template>
 	<div class="header">
 		<ul class="dropdown-list">
-			<li class="list-item">Icon</li>
-			<li class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">File</li>
-			<li class="list-item">About</li>
-			<li class="list-item">Themes</li>
+			<li title="Icon" class="list-item">Icon</li>
+			<li title="File" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">File</li>
+			<li title="About" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">About</li>
+			<li title="Themes" class="list-item">Themes</li>
 		</ul>
 		<!-- v-bind  -->
 		<Dropdown
-			v-show="hover"
+			v-show="dropdown['file'] === 1"
+			title="File"
 			:style="{ left: leftXOption + 'px' }"
-			:options="['System', 'Stickies']"
-			@mouseover.native="hover = true"
-			@mouseleave.native="hover = false"
+			:options="[{ title: 'System', onclick: test() }]"
+			@mouseover.native="open('file')"
+			@mouseleave.native="close('file')"
+		/>
+		<Dropdown
+			v-show="dropdown['about'] === 1"
+			title="About"
+			:style="{ left: leftXOption + 'px' }"
+			:options="[
+				{ title: 'Instagram', link: 'https://google.com' },
+				{ title: 'Twitter', link: 'https://google.com' },
+				{ title: 'LinkedIn', link: 'https://google.com' },
+				{ title: 'Github', link: 'https://google.com' },
+				{ title: 'Codepen', link: 'https://google.com' }
+			]"
+			@mouseover.native="open('about')"
+			@mouseleave.native="close('about')"
 		/>
 
 		<div class="datesWrap">
@@ -37,19 +52,45 @@ export default Vue.extend({
 			time: dayjs().format("hh:mm:ss A"),
 			date: dayjs().format("ddd MMM MM YYYY"),
 			hover: false,
-			leftXOption: 0
+			leftXOption: 0,
+			dropdown: {
+				icon: 0,
+				file: 0,
+				about: 0,
+				themes: 0
+			}
 		}
 	},
 	mounted() {
 		this.getTime()
 	},
 	methods: {
-		mouseEnter(event: any) {
-			this.hover = true
-			this.leftXOption = event.target.offsetLeft
+		open(name: string) {
+			Vue.set(this.dropdown, name, 1)
+		},
+		close(name: string) {
+			Vue.set(this.dropdown, name, 0)
+		},
+		test() {
+			console.log("this")
+		},
+		mouseEnter(e: any) {
+			this.dropdown = {
+				icon: 0,
+				file: 0,
+				about: 0,
+				themes: 0,
+				[`${e.target.getAttribute("title").toLowerCase()}`]: 1
+			}
+			this.leftXOption = e.target.offsetLeft
 		},
 		mouseLeave() {
-			this.hover = false
+			this.dropdown = {
+				icon: 0,
+				file: 0,
+				about: 0,
+				themes: 0
+			}
 		},
 		setTime() {
 			this.time = dayjs().format("hh:mm:ss A")
