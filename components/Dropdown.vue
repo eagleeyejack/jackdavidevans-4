@@ -2,7 +2,7 @@
 	<ul class="dropdown-menu">
 		<li v-for="option in options" :key="option.title">
 			<a v-if="option.link" :href="option.link" target="_blank">{{ `${option.title}` }}</a>
-			<button v-else @click="option.passedFunc">{{ `${option.title}` }}</button>
+			<button v-else @click="option.passedFunc(option.title.toLowerCase())">{{ `${option.title}` }}</button>
 		</li>
 	</ul>
 </template>
@@ -46,6 +46,7 @@ export default Vue.extend({
 
 	li {
 		padding: var(--space-tiny);
+		cursor: pointer;
 
 		button {
 			border: 0;
@@ -55,6 +56,7 @@ export default Vue.extend({
 			font-size: 16px;
 			font-family: chicago;
 			background: transparent;
+			cursor: pointer;
 
 			&:focus {
 				outline: none;

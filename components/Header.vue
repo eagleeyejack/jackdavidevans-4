@@ -6,12 +6,11 @@
 			<li title="About" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">About</li>
 			<li title="Themes" class="list-item">Themes</li>
 		</ul>
-		<!-- v-bind  -->
 		<Dropdown
 			v-show="dropdown['file'] === 1"
 			title="File"
 			:style="{ left: leftXOption + 'px' }"
-			:options="[{ title: 'System', passedFunc: jacko }]"
+			:options="[{ title: 'System', passedFunc: openWindow }]"
 			@mouseover.native="open('file')"
 			@mouseleave.native="close('file')"
 		/>
@@ -29,7 +28,7 @@
 			@mouseover.native="open('about')"
 			@mouseleave.native="close('about')"
 		/>
-		<Window title="System" :index="2" :visible="windows.system" :close="close">
+		<Window title="System" :index="2" :visible="windows.system" :close="closeWindow">
 			<System />
 		</Window>
 
@@ -79,8 +78,11 @@ export default Vue.extend({
 		close(name: string) {
 			Vue.set(this.dropdown, name, 0)
 		},
-		jacko() {
-			console.log("he")
+		openWindow(name: string) {
+			Vue.set(this.windows, name, 1)
+		},
+		closeWindow(name: string) {
+			Vue.set(this.windows, name, 0)
 		},
 		mouseEnter(e: any) {
 			this.dropdown = {

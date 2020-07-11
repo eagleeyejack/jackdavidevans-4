@@ -31,7 +31,6 @@
 				</ul>
 			</div>
 		</div>
-		<div class="system__bottom">bottom</div>
 	</div>
 </template>
 
@@ -65,7 +64,6 @@ export default Vue.extend({
 
 <style lang="scss">
 .system {
-	background: lightblue;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -76,7 +74,6 @@ export default Vue.extend({
 	}
 
 	&__middle {
-		background: red;
 		padding: 10px 0;
 	}
 	&__bottom {

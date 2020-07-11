@@ -10,7 +10,7 @@
 		<div class="window__inner">
 			<button class="window__close" @click="close(title.toLowerCase())" />
 			<div class="window__title">{{ title }}</div>
-			<div class="window__contents">
+			<div :class="getClass()">
 				<slot></slot>
 			</div>
 			<div class="resizer top-left" />
@@ -66,6 +66,13 @@ export default Vue.extend({
 		dragItems.methods.dragElement(this.$el)
 		resizeDiv.methods.resizeDiv(`#${this.title.toLowerCase()}`)
 		this.localVisible = this.visible
+	},
+	methods: {
+		getClass() {
+			return {
+				window__contents: this.title !== "System"
+			}
+		}
 	}
 })
 </script>
