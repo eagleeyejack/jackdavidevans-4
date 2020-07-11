@@ -16,6 +16,7 @@
     "@nuxtjs/now-builder": "^0.17.2",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "dayjs": "^1.8.28",
+    "detect-browser": "^5.1.1",
     "node-sass": "^4.14.1",
     "nuxt": "^2.13.0",
     "sass-loader": "^8.0.2"

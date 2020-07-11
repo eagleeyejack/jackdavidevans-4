@@ -1,8 +1,8 @@
 <template>
 	<ul class="dropdown-menu">
-		<li v-for="option in options" :key="option">
+		<li v-for="option in options" :key="option.title">
 			<a v-if="option.link" :href="option.link" target="_blank">{{ `${option.title}` }}</a>
-			<button v-else @click="test()">{{ `${option.title}` }}</button>
+			<button v-else @click="option.passedFunc">{{ `${option.title}` }}</button>
 		</li>
 	</ul>
 </template>
@@ -18,10 +18,6 @@ export default Vue.extend({
 		},
 		options: {
 			type: Array,
-			required: true
-		},
-		test: {
-			type: Function,
 			required: true
 		}
 	},
@@ -59,6 +55,11 @@ export default Vue.extend({
 			font-size: 16px;
 			font-family: chicago;
 			background: transparent;
+
+			&:focus {
+				outline: none;
+				box-shadow: none;
+			}
 		}
 
 		&:hover {

@@ -11,7 +11,7 @@
 			v-show="dropdown['file'] === 1"
 			title="File"
 			:style="{ left: leftXOption + 'px' }"
-			:options="[{ title: 'System', onclick: test() }]"
+			:options="[{ title: 'System', passedFunc: jacko }]"
 			@mouseover.native="open('file')"
 			@mouseleave.native="close('file')"
 		/>
@@ -29,6 +29,9 @@
 			@mouseover.native="open('about')"
 			@mouseleave.native="close('about')"
 		/>
+		<Window title="System" :index="2" :visible="windows.system" :close="close">
+			<System />
+		</Window>
 
 		<div class="datesWrap">
 			<div class="time">{{ time }}</div>
@@ -42,10 +45,12 @@ import Vue from "vue"
 import dayjs from "dayjs"
 
 import Dropdown from "../components/Dropdown.vue"
+import System from "../components/System.vue"
 
 export default Vue.extend({
 	components: {
-		Dropdown
+		Dropdown,
+		System
 	},
 	data() {
 		return {
@@ -58,6 +63,9 @@ export default Vue.extend({
 				file: 0,
 				about: 0,
 				themes: 0
+			},
+			windows: {
+				system: 1
 			}
 		}
 	},
@@ -71,8 +79,8 @@ export default Vue.extend({
 		close(name: string) {
 			Vue.set(this.dropdown, name, 0)
 		},
-		test() {
-			console.log("this")
+		jacko() {
+			console.log("he")
 		},
 		mouseEnter(e: any) {
 			this.dropdown = {
