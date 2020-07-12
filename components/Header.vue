@@ -142,7 +142,7 @@ export default Vue.extend({
 		&--theme {
 			display: none;
 
-			@media (min-width: 375px) {
+			@media (min-width: 545px) {
 				display: flex;
 			}
 		}
@@ -172,7 +172,7 @@ export default Vue.extend({
 		padding: var(--space-tiny);
 		border-left: 2px solid var(--color-black);
 
-		@media (min-width: 420px) {
+		@media (min-width: 465px) {
 			display: flex;
 		}
 	}
