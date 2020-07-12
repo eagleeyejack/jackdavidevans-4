@@ -25,7 +25,7 @@ export default {
 			},
 			{
 				name: "theme-color",
-				content: "#859ee2"
+				content: "#dddddd"
 			}
 		],
 		link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
