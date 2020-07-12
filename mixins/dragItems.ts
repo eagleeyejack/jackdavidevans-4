@@ -8,10 +8,11 @@ export default {
 
 			if (elmnt.children[0].children[2]) {
 				elmnt.children[0].children[2].addEventListener("mousedown", (e: any) => e.stopPropagation())
+				elmnt.children[0].children[2].addEventListener("touchstart", (e: any) => e.stopPropagation())
 			}
 
 			elmnt.onmousedown = dragMouseDown
-			elmnt.addEventListener("touchstart", dragMouseDown, false)
+			elmnt.addEventListener("touchstart", dragMouseDown)
 
 			function dragMouseDown(e: any) {
 				e.stopPropagation()
