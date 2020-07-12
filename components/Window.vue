@@ -4,13 +4,13 @@
 		:id="title.toLowerCase()"
 		:index="index"
 		:style="{ top: y + 'px', left: x + 'px' }"
-		class="window"
+		:class="getClassWindow()"
 		draggable="true"
 	>
 		<div class="window__inner">
 			<button class="window__close" @click="close(title.toLowerCase())" />
 			<div class="window__title">{{ title }}</div>
-			<div :class="getClass()">
+			<div :class="getClassContents()">
 				<slot></slot>
 			</div>
 			<div class="resizer top-left" />
@@ -50,8 +50,12 @@ export default Vue.extend({
 	data() {
 		return {
 			localVisible: 0,
-			y: this.index * 10 + 170 * this.index,
-			x: this.index * 10 + 110 * this.index
+			y: 10,
+			x: 10,
+			window: {
+				width: 0,
+				height: 0
+			}
 		}
 	},
 	watch: {
@@ -62,16 +66,43 @@ export default Vue.extend({
 			}
 		}
 	},
+	beforeMount() {
+		window.addEventListener("resize", this.handleResize)
+		this.handleResize()
+	},
+	beforeDestroy() {
+		window.removeEventListener("resize", this.handleResize)
+	},
 	mounted() {
 		dragItems.methods.dragElement(this.$el)
 		resizeDiv.methods.resizeDiv(`#${this.title.toLowerCase()}`)
 		this.localVisible = this.visible
+		this.initialPosition()
 	},
 	methods: {
-		getClass() {
+		getClassContents() {
 			return {
 				window__contents: this.title !== "System"
 			}
+		},
+		getClassWindow() {
+			return {
+				"window window--tabletUp": this.window.width > 768,
+				window: this.window.width < 768
+			}
+		},
+		initialPosition() {
+			if (this.window.width < 768) {
+				this.y = this.index * 10 + 20 * this.index
+				this.x = this.index * 10 * this.index
+			} else {
+				this.y = this.index * 10 + 170 * this.index
+				this.x = this.index * 10 + 110 * this.index
+			}
+		},
+		handleResize() {
+			this.window.width = window.innerWidth
+			this.window.height = window.innerHeight
 		}
 	}
 })
@@ -109,17 +140,33 @@ export default Vue.extend({
 	top: 0;
 	text-align: center;
 	background: var(--color-grey);
-	min-width: 600px;
 	padding: var(--space-tiny);
 	user-select: none;
 	top: 300px;
 	left: 300px;
 	z-index: 1;
 	border: 2px solid var(--color-black);
-	min-height: 400px;
-	max-width: 1000px;
-	max-height: 700px;
+	max-width: calc(100vw - 40px);
+	min-height: 300px;
+	width: calc(100vw - 40px);
 	z-index: 6;
+
+	&:after {
+		content: "";
+		position: absolute;
+		height: 36px;
+		width: calc(100% - 34px);
+		left: 34px;
+		background: transparent;
+		top: 0;
+	}
+
+	&--tabletUp {
+		min-width: 600px;
+		min-height: 400px;
+		max-width: 1000px;
+		max-height: 700px;
+	}
 
 	&__inner {
 		height: 100%;
@@ -156,7 +203,8 @@ export default Vue.extend({
 		width: 100%;
 		padding: var(--space-tiny);
 		overflow: scroll;
-		max-height: calc(700px - 46px);
+		max-height: calc(700px - 50px);
+		min-height: calc(400px - 50px);
 	}
 }
 </style>

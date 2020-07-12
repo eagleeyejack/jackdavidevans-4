@@ -12,9 +12,7 @@
 				</div>
 			</Window>
 			<Window title="Contact" :index="3" :visible="windows.contact" :close="close">
-				<div>
-					<h1>Exsdd</h1>
-				</div>
+				<Contact />
 			</Window>
 			<Window title="Experience" :index="2" :visible="windows.experience" :close="close">
 				<Experience v-for="experience in experiences" :key="experience.company" :experience="experience" />
@@ -28,10 +26,12 @@ import Vue from "vue"
 import { experiences } from "static/experience"
 
 import Experience from "../components/Experience.vue"
+import Contact from "../components/Contact.vue"
 
 export default Vue.extend({
 	components: {
-		Experience
+		Experience,
+		Contact
 	},
 	data() {
 		return {

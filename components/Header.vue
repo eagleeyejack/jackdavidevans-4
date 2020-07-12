@@ -1,10 +1,9 @@
 <template>
 	<div class="header">
 		<ul class="dropdown-list">
-			<li title="Icon" class="list-item">Icon</li>
 			<li title="File" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">File</li>
 			<li title="About" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">About</li>
-			<li title="Themes" class="list-item">Themes</li>
+			<li title="Themes" class="list-item list-item--theme">Themes</li>
 		</ul>
 		<Dropdown
 			v-show="dropdown['file'] === 1"
@@ -58,13 +57,12 @@ export default Vue.extend({
 			hover: false,
 			leftXOption: 0,
 			dropdown: {
-				icon: 0,
 				file: 0,
 				about: 0,
 				themes: 0
 			},
 			windows: {
-				system: 1
+				system: 0
 			}
 		}
 	},
@@ -86,7 +84,6 @@ export default Vue.extend({
 		},
 		mouseEnter(e: any) {
 			this.dropdown = {
-				icon: 0,
 				file: 0,
 				about: 0,
 				themes: 0,
@@ -96,7 +93,6 @@ export default Vue.extend({
 		},
 		mouseLeave() {
 			this.dropdown = {
-				icon: 0,
 				file: 0,
 				about: 0,
 				themes: 0
@@ -142,6 +138,14 @@ export default Vue.extend({
 			color: var(--color-white);
 			background: var(--color-blue-dark);
 		}
+
+		&--theme {
+			display: none;
+
+			@media (min-width: 375px) {
+				display: flex;
+			}
+		}
 	}
 }
 
@@ -161,12 +165,16 @@ export default Vue.extend({
 	}
 
 	.date {
-		display: flex;
+		display: none;
 		justify-content: center;
 		align-items: center;
 		height: 100%;
 		padding: var(--space-tiny);
 		border-left: 2px solid var(--color-black);
+
+		@media (min-width: 420px) {
+			display: flex;
+		}
 	}
 }
 </style>

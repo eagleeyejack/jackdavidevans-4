@@ -6,6 +6,7 @@
 
 <style lang="scss">
 html {
+	max-height: 100vh;
 	font-family: chicago, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
 		Arial, sans-serif;
 	word-spacing: 1px;
@@ -15,6 +16,10 @@ html {
 	-webkit-font-smoothing: antialiased;
 	box-sizing: border-box;
 	background-color: var(--color-blue);
+}
+
+#__nuxt {
+	overflow: hidden;
 }
 
 body {
