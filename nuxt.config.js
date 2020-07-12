@@ -22,6 +22,10 @@ export default {
 				hid: "description",
 				name: "description",
 				content: ""
+			},
+			{
+				name: "theme-color",
+				content: "#859ee2"
 			}
 		],
 		link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]

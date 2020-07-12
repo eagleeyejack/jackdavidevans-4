@@ -114,10 +114,14 @@ export default Vue.extend({
 	background: var(--color-grey);
 	height: 26px;
 	border-bottom: 2px solid var(--color-black);
-	padding: 0 1rem;
+	padding: 0;
 	font-size: 16px;
 	justify-content: space-between;
 	font-family: chicago;
+
+	@media (min-width: 545px) {
+		padding: 0 1rem;
+	}
 }
 
 .dropdown-list {
