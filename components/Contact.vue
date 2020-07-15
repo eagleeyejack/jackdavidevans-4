@@ -5,64 +5,37 @@
 		</div>
 
 		<fieldset>
-			<legend>Vue Contact Form</legend>
 			<div>
 				<label class="label" for="name">Name</label>
-				<input id="name" v-model="name" type="text" name="name" required="" />
+				<input id="name" v-model="name" type="text" name="name" placeholder="Your Name" required />
 			</div>
 			<div>
 				<label class="label" for="email">Email</label>
 				<input
 					id="email"
 					v-model="email.value"
+					placeholder="Your Email"
 					type="email"
 					name="email"
-					required=""
+					required
 					:class="{ email, error: !email.valid }"
 				/>
 			</div>
 			<div>
-				<h4>Team Member</h4>
-				<p class="select">
-					<select v-model="selection.member" class="budget">
-						<option value="0">Sarah Drasner</option>
-						<option value="1">Evan You</option>
-					</select>
-				</p>
-			</div>
-
-			<div>
-				<h4>Framework</h4>
-
-				<ul class="vue-form-list">
-					<li>
-						<input id="radio-1" v-model="selection.framework" type="radio" name="radio-1" value="angular" />
-						<label for="radio-1">AngularJS</label>
-					</li>
-					<li>
-						<input id="radio-2" v-model="selection.framework" type="radio" name="radio-2" value="react" />
-						<label for="radio-2">ReactJS</label>
-					</li>
-					<li>
-						<input id="radio-3" v-model="selection.framework" type="radio" name="radio-3" value="vue" />
-						<label for="radio-3">VueJS</label>
-					</li>
-				</ul>
-			</div>
-			<div>
-				<label class="label" for="textarea">Message with Counter</label>
+				<label class="label" for="textarea">Message</label>
 				<textarea
 					id="textarea"
 					v-model="message.text"
 					class="message"
 					name="textarea"
-					required=""
+					placeholder="Your Message"
+					required
 					:maxlength="message.maxlength"
 				></textarea>
 				<span class="counter">{{ message.text.length }} / {{ message.maxlength }}</span>
 			</div>
 			<div>
-				<input type="submit" value="Send Form" />
+				<input class="button" type="submit" value="Send Form" />
 			</div>
 		</fieldset>
 	</form>
@@ -75,26 +48,19 @@ const emailRegExp = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9
 export default Vue.extend({
 	data() {
 		return {
-			name: "John Doe",
+			name: "",
 			email: {
-				value: "jo@hnd.oe",
+				value: "",
 				valid: true
 			},
-			features: ["Reactivity", "Encapsulation", "Data Binding"],
-			selection: {
-				member: "0",
-				framework: "vue",
-				features: []
-			},
 			message: {
-				text: `Dear Mr. President,\n...`,
-				maxlength: 255
+				text: ``,
+				maxlength: 400
 			},
 			submitted: false
 		}
 	},
 	watch: {
-		// watching nested property
 		"email.value"(value) {
 			this.validate("email", value)
 		}
@@ -103,6 +69,7 @@ export default Vue.extend({
 		// submit form handler
 		submit() {
 			this.submitted = true
+			console.log(this.name, this.email.value, this.message.text)
 		},
 		// validate by type and value
 		validate(type: any, value: any) {
@@ -127,21 +94,14 @@ export default Vue.extend({
 
 .vue-form {
 	font-size: 16px;
-	width: 500px;
-	padding: 15px 30px;
 	border-radius: 4px;
 	margin: 0 auto;
-	width: 500px;
+	padding: var(--space-small);
 	background-color: #fff;
-	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
+	font-family: chicago;
 
 	fieldset {
 		margin: 24px 0 0 0;
-	}
-
-	legend {
-		padding-bottom: 10px;
-		border-bottom: 1px solid #ecf0f1;
 	}
 
 	div {
@@ -158,6 +118,7 @@ export default Vue.extend({
 		color: #94aab0;
 		margin-bottom: 10px;
 		display: block;
+		text-align: left;
 	}
 
 	input,
@@ -245,23 +206,6 @@ export default Vue.extend({
 
 		&::-ms-expand {
 			display: none;
-		}
-	}
-
-	.vue-form-list {
-		margin-top: 16px;
-
-		&::after {
-			clear: both;
-			content: "";
-			display: table;
-		}
-
-		li {
-			display: inline-block;
-			position: relative;
-			user-select: none;
-			margin: 0 26px 16px 0;
 		}
 	}
 
@@ -378,10 +322,12 @@ export default Vue.extend({
 		min-height: 120px;
 		resize: vertical;
 		overflow: auto;
+		font-family: Arial, Helvetica, sans-serif;
 	}
 
-	input[type="submit"] {
+	.button {
 		border: none;
+		font-family: chicago;
 		background: #2c3e50;
 		border-radius: 0.25em;
 		padding: 12px 20px;
@@ -400,7 +346,7 @@ export default Vue.extend({
 }
 
 .vue-form {
-	input[type="submit"] {
+	.button {
 		&:focus {
 			outline: none;
 			background: #2b3e51;

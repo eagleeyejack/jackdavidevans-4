@@ -56,7 +56,7 @@ export default {
 
 				elmnt.style.top = elmnt.offsetTop - pos2 + "px"
 				elmnt.style.left = elmnt.offsetLeft - pos1 + "px"
-				elmnt.style.zIndex = 5
+				elmnt.style.zIndex = 8
 			}
 
 			function closeDragElement() {
@@ -64,7 +64,7 @@ export default {
 				document.onmousemove = null
 				document.ontouchend = null
 				document.ontouchmove = null
-				elmnt.style.zIndex = 4
+				elmnt.style.zIndex = 7
 			}
 		}
 	}
