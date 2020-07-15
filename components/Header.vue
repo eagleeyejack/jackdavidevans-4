@@ -3,7 +3,9 @@
 		<ul class="dropdown-list">
 			<li title="File" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">File</li>
 			<li title="About" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">About</li>
-			<li title="Themes" class="list-item list-item--theme">Themes</li>
+			<li title="Themes" class="list-item list-item--theme" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+				Themes
+			</li>
 		</ul>
 		<Dropdown
 			v-show="dropdown['file'] === 1"
@@ -18,14 +20,27 @@
 			title="About"
 			:style="{ left: leftXOption + 'px' }"
 			:options="[
-				{ title: 'Instagram', link: 'https://google.com' },
-				{ title: 'Twitter', link: 'https://google.com' },
-				{ title: 'LinkedIn', link: 'https://google.com' },
-				{ title: 'Github', link: 'https://google.com' },
-				{ title: 'Codepen', link: 'https://google.com' }
+				{ title: 'Instagram', link: 'https://instagram.com/jackdavidevans' },
+				{ title: 'Twitter', link: 'https://twitter.com/jackdavidevans' },
+				{ title: 'LinkedIn', link: 'https://www.linkedin.com/in/jackdavidevans' },
+				{ title: 'Github', link: 'https://github.com/eagleeyejack' },
+				{ title: 'Codepen', link: 'https://codepen.io/eagleeyejack' }
 			]"
 			@mouseover.native="open('about')"
 			@mouseleave.native="close('about')"
+		/>
+		<Dropdown
+			v-show="dropdown['themes'] === 1"
+			title="Themes"
+			:style="{ left: leftXOption + 'px' }"
+			:options="[
+				{ title: 'Green', passedFunc: colorChange },
+				{ title: 'Pink', passedFunc: colorChange },
+				{ title: 'Yellow', passedFunc: colorChange },
+				{ title: 'Blue', passedFunc: colorChange }
+			]"
+			@mouseover.native="open('themes')"
+			@mouseleave.native="close('themes')"
 		/>
 		<Window title="System" :index="2" :visible="windows.system" :close="closeWindow">
 			<System />
@@ -103,6 +118,17 @@ export default Vue.extend({
 		},
 		getTime() {
 			setInterval(this.setTime, 1000)
+		},
+		colorChange(e: any) {
+			const colors: any = {
+				green: "#b5ecda",
+				pink: "rgb(255, 201, 201)",
+				yellow: "#fff6d9",
+				blue: "#859ee2"
+			}
+
+			// eslint-disable-next-line dot-notation
+			document.body.style.backgroundColor = colors[e]
 		}
 	}
 })

@@ -47,11 +47,15 @@ export default Vue.extend({
 	li {
 		padding: var(--space-tiny);
 		cursor: pointer;
+		height: 36px;
+		display: flex;
 
-		button {
+		button,
+		a {
 			border: 0;
 			height: 100%;
 			width: 100%;
+			padding: 0;
 			text-align: left;
 			font-size: 16px;
 			font-family: chicago;

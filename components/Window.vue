@@ -5,7 +5,6 @@
 		:index="index"
 		:style="{ top: y + 'px', left: x + 'px' }"
 		:class="getClassWindow()"
-		draggable="true"
 	>
 		<div class="window__inner">
 			<button class="window__close" @click="close(title.toLowerCase())" />
@@ -159,6 +158,7 @@ export default Vue.extend({
 		left: 34px;
 		background: transparent;
 		top: 0;
+		cursor: grab;
 	}
 
 	&--tabletUp {
@@ -180,7 +180,6 @@ export default Vue.extend({
 		font-family: chicago;
 		position: relative;
 		width: 100%;
-		cursor: grab;
 		padding-bottom: var(--space-tiny);
 		width: 100%;
 	}
