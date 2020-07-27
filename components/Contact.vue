@@ -98,7 +98,7 @@ export default Vue.extend({
 	margin: 0 auto;
 	padding: var(--space-small);
 	background-color: #fff;
-	font-family: chicago;
+	font-family: var(--font-grotesk-bold);
 
 	fieldset {
 		margin: 24px 0 0 0;
@@ -327,7 +327,7 @@ export default Vue.extend({
 
 	.button {
 		border: none;
-		font-family: chicago;
+		font-family: var(--font-grotesk-bold);
 		background: #2c3e50;
 		border-radius: 0.25em;
 		padding: 12px 20px;

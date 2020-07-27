@@ -61,7 +61,7 @@ export default Vue.extend({
 		color: var(--color-black);
 		font-size: 16px;
 		text-align: center;
-		font-family: chicago;
+		font-family: var(--font-grotesk-bold);
 		margin: 10px auto 0;
 		padding: 4px;
 		max-width: 106px;

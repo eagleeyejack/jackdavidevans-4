@@ -58,7 +58,7 @@ export default Vue.extend({
 			padding: 0;
 			text-align: left;
 			font-size: 16px;
-			font-family: chicago;
+			font-family: var(--font-grotesk-bold);
 			background: transparent;
 			cursor: pointer;
 

@@ -5,10 +5,35 @@
 </template>
 
 <style lang="scss">
+@font-face {
+	font-family: "HKGrotesk-Light";
+	font-weight: 200;
+	src: url("/fonts/HKGrotesk-Light.woff") format("woff");
+}
+
+@font-face {
+	font-family: "HKGrotesk-Regular";
+	font-weight: 400;
+	font-style: normal;
+	src: url("/fonts/HKGrotesk-Regular.woff") format("woff");
+}
+
+@font-face {
+	font-family: "HKGrotesk-Medium";
+	font-weight: 500;
+	src: url("/fonts/HKGrotesk-Medium.woff") format("woff");
+}
+
+@font-face {
+	font-family: "HKGrotesk-Bold";
+	font-weight: 700;
+	src: url("/fonts/HKGrotesk-Bold.woff") format("woff");
+}
+
 html {
 	max-height: 100vh;
-	font-family: chicago, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-		Arial, sans-serif;
+	font-family: "HKGrotesk-Bold", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	word-spacing: 1px;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -19,11 +44,12 @@ html {
 }
 
 #__nuxt {
+	overscroll-behavior: none;
 	overflow: hidden;
 }
 
 body {
-	font-family: chicago;
+	font-family: var(--font-grotesk-reg);
 }
 
 *,
@@ -41,7 +67,10 @@ body {
 	--color-grey: #dddddd;
 	--color-grey-dark: #a8a8a8;
 	--color-grey-darker: #c4c4c4;
-	--color-red: #ff123e;
+	--color-red: #f02d50;
+
+	--font-grotesk-reg: "HKGrotesk-Regular";
+	--font-grotesk-bold: "HKGrotesk-Bold";
 
 	--space-tiny: 10px;
 	--space-small: 16px;

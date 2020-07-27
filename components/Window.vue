@@ -177,7 +177,7 @@ export default Vue.extend({
 		color: var(--color-black);
 		font-size: 16px;
 		text-align: center;
-		font-family: chicago;
+		font-family: var(--font-grotesk-bold);
 		position: relative;
 		width: 100%;
 		padding-bottom: var(--space-tiny);

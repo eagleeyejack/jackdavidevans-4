@@ -29,7 +29,7 @@ export default Vue.extend({
 .experience {
 	text-align: left;
 	font-size: 16px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: var(--font-grotesk-reg);
 	line-height: 1.4;
 
 	h1 {

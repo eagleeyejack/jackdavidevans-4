@@ -143,7 +143,7 @@ export default Vue.extend({
 	padding: 0;
 	font-size: 16px;
 	justify-content: space-between;
-	font-family: chicago;
+	font-family: var(--font-grotesk-bold);
 
 	@media (min-width: 545px) {
 		padding: 0 1rem;

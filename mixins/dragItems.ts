@@ -64,7 +64,7 @@ export default {
 				document.onmousemove = null
 				document.ontouchend = null
 				document.ontouchmove = null
-				elmnt.style.zIndex = 7
+				elmnt.style.zIndex = 5
 			}
 		}
 	}
