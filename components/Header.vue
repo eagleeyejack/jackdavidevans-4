@@ -13,7 +13,7 @@
 			</li>
 			<li title="Email" class="list-item list-item--theme">
 				<a
-					href="mailto:jackevans38@gmail.com?subject=Let's talk&amp;body=Hello Jack,%0D%0A%0D%0AMy name is:%0D%0A%0D%0AI need to talk about..."
+					href="mailto:jackevans38@gmail.com?subject=Let's talk&amp;body=Hello Jack, ..."
 					target="_blank"
 					rel="noopener noreferrer"
 					>Email</a
