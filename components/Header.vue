@@ -161,7 +161,7 @@ export default Vue.extend({
 	justify-content: space-between;
 	font-family: var(--font-grotesk-bold);
 
-	@media (min-width: 545px) {
+	@media (min-width: 615px) {
 		padding: 0 1rem;
 	}
 }
@@ -203,7 +203,7 @@ export default Vue.extend({
 		&--theme {
 			display: none;
 
-			@media (min-width: 545px) {
+			@media (min-width: 615px) {
 				display: flex;
 			}
 		}

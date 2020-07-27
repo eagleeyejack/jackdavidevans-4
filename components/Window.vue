@@ -149,6 +149,7 @@ export default Vue.extend({
 	min-height: 300px;
 	width: calc(100vw - 40px);
 	z-index: 6;
+	/* overscroll-behavior: none; */
 
 	&:after {
 		content: "";
