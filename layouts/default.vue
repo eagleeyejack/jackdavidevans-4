@@ -20,6 +20,12 @@ export default Vue.extend({
 					document.body.style.opacity = "1"
 				}, 200)
 			} else {
+				// eslint-disable-next-line nuxt/no-globals-in-created
+				document.documentElement.style.backgroundColor = "#859ee2"
+				if (process.browser) {
+					localStorage.setItem("theme", "#859ee2")
+				}
+
 				setTimeout(function () {
 					// eslint-disable-next-line nuxt/no-globals-in-created
 					document.body.style.opacity = "1"
