@@ -33,9 +33,9 @@
 			title="About"
 			:style="{ left: leftXOption + 'px' }"
 			:options="[
+				{ title: 'View CV', link: 'https://view.publitas.com/p222-14439/jack-david-evans--cv/page/1' },
 				{ title: 'Instagram', link: 'https://instagram.com/jackdavidevans' },
 				{ title: 'Twitter', link: 'https://twitter.com/jackdavidevans' },
-				{ title: 'LinkedIn', link: 'https://www.linkedin.com/in/jackdavidevans' },
 				{ title: 'Github', link: 'https://github.com/eagleeyejack' },
 				{ title: 'Codepen', link: 'https://codepen.io/eagleeyejack' }
 			]"
