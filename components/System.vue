@@ -76,10 +76,6 @@ export default Vue.extend({
 	&__middle {
 		padding: 10px 0;
 	}
-	&__bottom {
-		background: yellow;
-	}
-
 	&__wrap {
 		width: 50%;
 		display: flex;

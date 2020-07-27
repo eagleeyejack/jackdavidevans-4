@@ -4,6 +4,32 @@
 	</div>
 </template>
 
+<script lang="ts">
+import Vue from "vue"
+export default Vue.extend({
+	beforeCreate() {
+		if (process.browser) {
+			// eslint-disable-next-line nuxt/no-globals-in-created
+			const theme = window.localStorage.getItem("theme")
+			if (theme) {
+				// eslint-disable-next-line nuxt/no-globals-in-created
+				document.documentElement.style.backgroundColor = JSON.parse(theme)
+
+				setTimeout(function () {
+					// eslint-disable-next-line nuxt/no-globals-in-created
+					document.body.style.opacity = "1"
+				}, 200)
+			} else {
+				setTimeout(function () {
+					// eslint-disable-next-line nuxt/no-globals-in-created
+					document.body.style.opacity = "1"
+				}, 200)
+			}
+		}
+	}
+})
+</script>
+
 <style lang="scss">
 @font-face {
 	font-family: "HKGrotesk-Light";
@@ -40,7 +66,7 @@ html {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	box-sizing: border-box;
-	background-color: var(--color-blue);
+	/* background-color: var(--color-blue); */
 }
 
 #__nuxt {
@@ -49,6 +75,8 @@ html {
 }
 
 body {
+	transition: 0.3s ease all;
+	opacity: 0;
 	font-family: var(--font-grotesk-reg);
 }
 

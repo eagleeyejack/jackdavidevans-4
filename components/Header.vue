@@ -6,6 +6,19 @@
 			<li title="Themes" class="list-item list-item--theme" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
 				Themes
 			</li>
+			<li title="LinkedIn" class="list-item list-item--theme">
+				<a href="https://www.linkedin.com/in/jackdavidevans" target="_blank">
+					LinkedIn
+				</a>
+			</li>
+			<li title="Email" class="list-item list-item--theme">
+				<a
+					href="mailto:jackevans38@gmail.com?subject=Let's talk&amp;body=Hello Jack,%0D%0A%0D%0AMy name is:%0D%0A%0D%0AI need to talk about..."
+					target="_blank"
+					rel="noopener noreferrer"
+					>Email</a
+				>
+			</li>
 		</ul>
 		<Dropdown
 			v-show="dropdown['file'] === 1"
@@ -129,6 +142,9 @@ export default Vue.extend({
 
 			// eslint-disable-next-line dot-notation
 			document.body.style.backgroundColor = colors[e]
+			if (process.browser) {
+				localStorage.setItem("theme", JSON.stringify(colors[e]))
+			}
 		}
 	}
 })
@@ -164,9 +180,24 @@ export default Vue.extend({
 		padding: 0 var(--space-tiny);
 		cursor: pointer;
 
+		a {
+			text-decoration: none;
+			color: var(--color-black);
+			height: 100%;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
 		&:hover {
 			color: var(--color-white);
 			background: var(--color-blue-dark);
+
+			a {
+				color: var(--color-white);
+				background: var(--color-blue-dark);
+			}
 		}
 
 		&--theme {
