@@ -45,7 +45,6 @@ export default Vue.extend({
 	}
 
 	li {
-		padding: var(--space-tiny);
 		cursor: pointer;
 		height: 36px;
 		display: flex;
@@ -61,6 +60,7 @@ export default Vue.extend({
 			font-family: var(--font-grotesk-bold);
 			background: transparent;
 			cursor: pointer;
+			padding: var(--space-tiny);
 
 			&:focus {
 				outline: none;
@@ -80,9 +80,6 @@ export default Vue.extend({
 		a {
 			text-decoration: none;
 			color: var(--color-black);
-		}
-
-		&:first-child {
 			padding: var(--space-tiny);
 		}
 	}
