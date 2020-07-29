@@ -11,14 +11,6 @@
 					LinkedIn
 				</a>
 			</li>
-			<li title="Email" class="list-item list-item--hide-sm">
-				<a
-					href="mailto:jackevans38@gmail.com?subject=Let's talk&amp;body=Hello Jack, ..."
-					target="_blank"
-					rel="noopener noreferrer"
-					>Email</a
-				>
-			</li>
 		</ul>
 		<!-- <Dropdown
 			v-show="dropdown['file'] === 1"

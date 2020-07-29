@@ -1,5 +1,18 @@
 <template>
-	<div :id="title" :index="index" class="desktop-icon" draggable="true" :style="{ top: y + 'px' }">
+	<a
+		v-if="link"
+		:id="title"
+		:href="link"
+		target="_blank"
+		:index="index"
+		class="desktop-icon"
+		draggable="true"
+		:style="{ top: y + 'px' }"
+	>
+		<div class="desktop-icon__icon"><img :src="image" /></div>
+		<div class="desktop-icon__title">{{ title }}</div>
+	</a>
+	<div v-else :id="title" :index="index" class="desktop-icon" draggable="true" :style="{ top: y + 'px' }">
 		<div class="desktop-icon__icon"><img :src="image" /></div>
 		<div class="desktop-icon__title">{{ title }}</div>
 	</div>
@@ -15,6 +28,11 @@ export default Vue.extend({
 		title: {
 			type: String,
 			required: true
+		},
+		link: {
+			type: String,
+			required: false,
+			default: ""
 		},
 		index: {
 			type: Number,

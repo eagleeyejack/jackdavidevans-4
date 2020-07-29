@@ -3,6 +3,12 @@
 		<Header />
 		<div class="desktop" draggable="false" @dragover.stop @drop.prevent="drop">
 			<DesktopIcon title="Experience" image="/icons/toolbox.svg" :index="1" @click.native="open('experience')" />
+			<DesktopIcon
+				title="Contact"
+				link="mailto:jackevans38@gmail.com?subject=Let's talk&amp;body=Hello Jack, ..."
+				image="/icons/mail.svg"
+				:index="2"
+			/>
 
 			<!-- <DesktopIcon title="Contact" :index="2" @click.native="open('contact')" /> -->
 			<!-- <Window title="Contact" :index="2" :visible="windows.contact" :close="close">

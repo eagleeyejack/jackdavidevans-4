@@ -13,7 +13,7 @@ export default Vue.extend({
 			const theme = window.localStorage.getItem("theme")
 			if (theme) {
 				// eslint-disable-next-line nuxt/no-globals-in-created
-				document.documentElement.style.backgroundColor = theme
+				document.documentElement.style.backgroundColor = JSON.parse(theme)
 
 				setTimeout(function () {
 					// eslint-disable-next-line nuxt/no-globals-in-created
