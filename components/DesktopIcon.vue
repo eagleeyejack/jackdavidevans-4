@@ -1,6 +1,6 @@
 <template>
 	<div :id="title" :index="index" class="desktop-icon" draggable="true" :style="{ top: y + 'px' }">
-		<div class="desktop-icon__icon">{{ index }}</div>
+		<div class="desktop-icon__icon"><img :src="image" /></div>
 		<div class="desktop-icon__title">{{ title }}</div>
 	</div>
 </template>
@@ -18,6 +18,10 @@ export default Vue.extend({
 		},
 		index: {
 			type: Number,
+			required: true
+		},
+		image: {
+			type: String,
 			required: true
 		}
 	},
@@ -48,11 +52,15 @@ export default Vue.extend({
 	left: 10px;
 
 	&__icon {
-		background: var(--color-grey);
 		height: 75px;
 		width: 75px;
 		margin: 0 auto;
 		font-size: 20px;
+
+		img {
+			height: 70px;
+			width: 70px;
+		}
 	}
 
 	&__title {

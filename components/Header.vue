@@ -1,17 +1,17 @@
 <template>
 	<div class="header">
 		<ul class="dropdown-list">
-			<li title="File" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">File</li>
+			<!-- <li title="File" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">File</li> -->
 			<li title="About" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">About</li>
-			<li title="Themes" class="list-item list-item--theme" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+			<li title="Themes" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
 				Themes
 			</li>
-			<li title="LinkedIn" class="list-item list-item--theme">
+			<li title="LinkedIn" class="list-item list-item--hide-sm">
 				<a href="https://www.linkedin.com/in/jackdavidevans" target="_blank">
 					LinkedIn
 				</a>
 			</li>
-			<li title="Email" class="list-item list-item--theme">
+			<li title="Email" class="list-item list-item--hide-sm">
 				<a
 					href="mailto:jackevans38@gmail.com?subject=Let's talk&amp;body=Hello Jack, ..."
 					target="_blank"
@@ -20,20 +20,21 @@
 				>
 			</li>
 		</ul>
-		<Dropdown
+		<!-- <Dropdown
 			v-show="dropdown['file'] === 1"
 			title="File"
 			:style="{ left: leftXOption + 'px' }"
 			:options="[{ title: 'System', passedFunc: openWindow }]"
 			@mouseover.native="open('file')"
 			@mouseleave.native="close('file')"
-		/>
+		/> -->
 		<Dropdown
 			v-show="dropdown['about'] === 1"
 			title="About"
 			:style="{ left: leftXOption + 'px' }"
 			:options="[
 				{ title: 'View CV', link: 'https://view.publitas.com/p222-14439/jack-david-evans--cv/page/1' },
+				{ title: 'LinkedIn', link: 'https://www.linkedin.com/in/jackdavidevans' },
 				{ title: 'Instagram', link: 'https://instagram.com/jackdavidevans' },
 				{ title: 'Twitter', link: 'https://twitter.com/jackdavidevans' },
 				{ title: 'Github', link: 'https://github.com/eagleeyejack' },
@@ -200,7 +201,7 @@ export default Vue.extend({
 			}
 		}
 
-		&--theme {
+		&--hide-sm {
 			display: none;
 
 			@media (min-width: 615px) {

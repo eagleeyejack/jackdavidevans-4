@@ -1,11 +1,6 @@
 <template>
 	<div class="experience">
-		<h1>{{ experience.company }}</h1>
-		<h2>{{ experience.position }}</h2>
-		<div>{{ experience.date }}</div>
-		<ul>
-			<li v-for="(listItem, index) in experience.list" :key="index">{{ listItem }}</li>
-		</ul>
+		Hello
 	</div>
 </template>
 
@@ -14,12 +9,7 @@ import Vue from "vue"
 
 export default Vue.extend({
 	components: {},
-	props: {
-		experience: {
-			type: Object,
-			required: true
-		}
-	},
+	props: {},
 	data() {
 		return {}
 	}
