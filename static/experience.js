@@ -23,7 +23,6 @@ export const experiences = [
 			"Project management using .git for version control.",
 			"Ensuring all websites are supported across a variety of browsers.",
 			"Using SEMrush, Google Analytics & Google Search Console to inform content",
-			"d design strategies.",
 			"Using Apache to manage production and staging environments for web projects.",
 			"Converting designs into working client websites.",
 			"Shopify theme customisation and deployment.",
