@@ -9,13 +9,7 @@ import Vue from "vue"
 export default Vue.extend({
 	beforeMount() {
 		const theme = window.localStorage.getItem("theme")
-		console.log("theme", theme)
 		if (theme) {
-			console.log("running")
-			console.log(`${JSON.parse(theme)}`)
-			console.log(JSON.parse(theme))
-			console.log(theme)
-			console.log(document)
 			document.body.style.backgroundColor = `${JSON.parse(theme)}`
 
 			setTimeout(function () {
