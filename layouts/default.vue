@@ -15,6 +15,7 @@ export default Vue.extend({
 			console.log(`${JSON.parse(theme)}`)
 			console.log(JSON.parse(theme))
 			console.log(theme)
+			console.log(document)
 			document.body.style.backgroundColor = `${JSON.parse(theme)}`
 
 			setTimeout(function () {
@@ -23,7 +24,7 @@ export default Vue.extend({
 		} else {
 			document.body.style.backgroundColor = "#859ee2"
 
-			localStorage.setItem("theme", "#859ee2")
+			localStorage.setItem("theme", `"#859ee2"`)
 
 			setTimeout(function () {
 				document.body.style.opacity = "1"
