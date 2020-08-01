@@ -19,7 +19,7 @@ export default Vue.extend({
 			console.log("inside theme")
 			// eslint-disable-next-line nuxt/no-globals-in-created
 
-			document.documentElement.style.backgroundColor = JSON.parse(theme)
+			// document.documentElement.style.backgroundColor = JSON.parse(theme)
 
 			setTimeout(function () {
 				// eslint-disable-next-line nuxt/no-globals-in-created
