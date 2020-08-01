@@ -8,31 +8,19 @@
 import Vue from "vue"
 export default Vue.extend({
 	beforeMount() {
-		console.log(process.browser, "browser")
-		console.log(process.client, "client")
-
-		console.log(window, "window")
-		// eslint-disable-next-line nuxt/no-globals-in-created
 		const theme = window.localStorage.getItem("theme")
-		console.log(theme, "theme")
 		if (theme) {
-			console.log("inside theme")
-			// eslint-disable-next-line nuxt/no-globals-in-created
-
 			document.body.style.backgroundColor = JSON.parse(theme)
 
 			setTimeout(function () {
-				// eslint-disable-next-line nuxt/no-globals-in-created
 				document.body.style.opacity = "1"
 			}, 200)
 		} else {
-			// eslint-disable-next-line nuxt/no-globals-in-created
 			document.body.style.backgroundColor = "#859ee2"
 
 			localStorage.setItem("theme", "#859ee2")
 
 			setTimeout(function () {
-				// eslint-disable-next-line nuxt/no-globals-in-created
 				document.body.style.opacity = "1"
 			}, 200)
 		}
