@@ -7,10 +7,11 @@
 <script lang="ts">
 import Vue from "vue"
 export default Vue.extend({
-	beforeCreate() {
+	beforeMount() {
 		if (process.browser) {
 			// eslint-disable-next-line nuxt/no-globals-in-created
 			const theme = window.localStorage.getItem("theme")
+			console.log(theme)
 			if (theme) {
 				// eslint-disable-next-line nuxt/no-globals-in-created
 				document.documentElement.style.backgroundColor = JSON.parse(theme)
