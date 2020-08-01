@@ -14,14 +14,14 @@ export default {
 	 ** See https://nuxtjs.org/api/configuration-head
 	 */
 	head: {
-		title: "Jack David Evans - Full Stack Developer ",
+		title: "Jack David Evans - Full Stack Developer",
 		meta: [
 			{ charset: "utf-8" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
 			{
 				hid: "description",
 				name: "description",
-				content: ""
+				content: "Full Stack developer & designer building websites using JavaScript."
 			},
 			{
 				name: "theme-color",
