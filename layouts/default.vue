@@ -10,7 +10,9 @@ export default Vue.extend({
 	beforeMount() {
 		const theme = window.localStorage.getItem("theme")
 		if (theme) {
-			// document.body.style.backgroundColor = JSON.parse(theme)
+			document.body.style.backgroundColor = `${JSON.parse(theme)}`
+			console.log(JSON.parse(theme))
+			console.log(theme)
 
 			setTimeout(function () {
 				document.body.style.opacity = "1"
