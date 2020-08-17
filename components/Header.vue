@@ -3,13 +3,9 @@
 		<ul class="dropdown-list">
 			<!-- <li title="File" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">File</li> -->
 			<li title="About" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">About</li>
-			<li title="Themes" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
-				Themes
-			</li>
+			<li title="Themes" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">Themes</li>
 			<li title="LinkedIn" class="list-item list-item--hide-sm">
-				<a href="https://www.linkedin.com/in/jackdavidevans" target="_blank">
-					LinkedIn
-				</a>
+				<a href="https://www.linkedin.com/in/jackdavidevans" target="_blank">LinkedIn</a>
 			</li>
 		</ul>
 		<!-- <Dropdown
@@ -19,7 +15,7 @@
 			:options="[{ title: 'System', passedFunc: openWindow }]"
 			@mouseover.native="open('file')"
 			@mouseleave.native="close('file')"
-		/> -->
+		/>-->
 		<Dropdown
 			v-show="dropdown['about'] === 1"
 			title="About"
@@ -121,6 +117,7 @@ export default Vue.extend({
 		},
 		setTime() {
 			this.time = dayjs().format("hh:mm:ss A")
+			this.date = dayjs().format("ddd MMM MM YYYY")
 		},
 		getTime() {
 			setInterval(this.setTime, 1000)
