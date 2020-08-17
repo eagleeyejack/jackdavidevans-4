@@ -70,7 +70,7 @@ export default Vue.extend({
 	data() {
 		return {
 			time: dayjs().format("hh:mm:ss A"),
-			date: dayjs().format("ddd MMM MM YYYY"),
+			date: dayjs().format("ddd MMM DD YYYY"),
 			hover: false,
 			leftXOption: 0,
 			dropdown: {
@@ -117,7 +117,7 @@ export default Vue.extend({
 		},
 		setTime() {
 			this.time = dayjs().format("hh:mm:ss A")
-			this.date = dayjs().format("ddd MMM MM YYYY")
+			this.date = dayjs().format("ddd MMM DD YYYY")
 		},
 		getTime() {
 			setInterval(this.setTime, 1000)
