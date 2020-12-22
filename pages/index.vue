@@ -9,11 +9,6 @@
 				image="/icons/mail.svg"
 				:index="2"
 			/>
-
-			<!-- <DesktopIcon title="Contact" :index="2" @click.native="open('contact')" /> -->
-			<!-- <Window title="Contact" :index="2" :visible="windows.contact" :close="close">
-				<Contact />
-			</Window> -->
 			<Window title="Experience" :index="1" :visible="windows.experience" :close="close">
 				<Experience v-for="experience in experiences" :key="experience.company" :experience="experience" />
 			</Window>
@@ -26,12 +21,10 @@ import Vue from "vue"
 import { experiences } from "static/experience"
 
 import Experience from "../components/Experience.vue"
-// import Contact from "../components/Contact.vue"
 
 export default Vue.extend({
 	components: {
 		Experience
-		// Contact
 	},
 	data() {
 		return {

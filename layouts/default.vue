@@ -6,6 +6,9 @@
 
 <script lang="ts">
 import Vue from "vue"
+import Vue2TouchEvents from "vue2-touch-events"
+
+Vue.use(Vue2TouchEvents)
 export default Vue.extend({
 	beforeMount() {
 		const theme = window.localStorage.getItem("theme")

@@ -1,23 +1,19 @@
 <template>
 	<div class="header">
 		<ul class="dropdown-list">
-			<!-- <li title="File" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">File</li> -->
-			<li title="About" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">About</li>
-			<li title="Themes" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">Themes</li>
+			<li title="About" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave" @click="mouseEnter">
+				About
+			</li>
+			<li title="Themes" class="list-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave" @click="mouseEnter">
+				Themes
+			</li>
 			<li title="LinkedIn" class="list-item list-item--hide-sm">
 				<a href="https://www.linkedin.com/in/jackdavidevans" target="_blank">LinkedIn</a>
 			</li>
 		</ul>
-		<!-- <Dropdown
-			v-show="dropdown['file'] === 1"
-			title="File"
-			:style="{ left: leftXOption + 'px' }"
-			:options="[{ title: 'System', passedFunc: openWindow }]"
-			@mouseover.native="open('file')"
-			@mouseleave.native="close('file')"
-		/>-->
 		<Dropdown
 			v-show="dropdown['about'] === 1"
+			v-click-outside="closeDropdown"
 			title="About"
 			:style="{ left: leftXOption + 'px' }"
 			:options="[
@@ -34,6 +30,7 @@
 		/>
 		<Dropdown
 			v-show="dropdown['themes'] === 1"
+			v-click-outside="closeDropdown"
 			title="Themes"
 			:style="{ left: leftXOption + 'px' }"
 			:options="[
@@ -60,6 +57,8 @@
 import Vue from "vue"
 import dayjs from "dayjs"
 
+// @ts-ignore
+import ClickOutside from "vue-click-outside"
 import Dropdown from "../components/Dropdown.vue"
 import System from "../components/System.vue"
 
@@ -67,6 +66,9 @@ export default Vue.extend({
 	components: {
 		Dropdown,
 		System
+	},
+	directives: {
+		ClickOutside
 	},
 	data() {
 		return {
@@ -81,7 +83,8 @@ export default Vue.extend({
 			},
 			windows: {
 				system: 0
-			}
+			},
+			clickCount: 0
 		}
 	},
 	mounted() {
@@ -114,6 +117,17 @@ export default Vue.extend({
 				file: 0,
 				about: 0,
 				themes: 0
+			}
+		},
+		closeDropdown(e: any) {
+			e.stopPropagation()
+
+			if (e.target.classList.contains("desktop") && e.type === "touchstart") {
+				this.dropdown = {
+					file: 0,
+					about: 0,
+					themes: 0
+				}
 			}
 		},
 		setTime() {
