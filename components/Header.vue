@@ -26,7 +26,8 @@
 				{ title: 'Instagram', link: 'https://instagram.com/jackdavidevans' },
 				{ title: 'Twitter', link: 'https://twitter.com/jackdavidevans' },
 				{ title: 'Github', link: 'https://github.com/eagleeyejack' },
-				{ title: 'Codepen', link: 'https://codepen.io/eagleeyejack' }
+				{ title: 'Codepen', link: 'https://codepen.io/eagleeyejack' },
+				{ title: 'Book shelf', link: 'https://books.jackdavidevans.co.uk' }
 			]"
 			@mouseover.native="open('about')"
 			@mouseleave.native="close('about')"
